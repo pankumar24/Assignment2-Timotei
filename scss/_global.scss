@@ -1,0 +1,140 @@
+@import './variables';
+$spacer: 25;
+
+$size-1: 0.25;
+$size-2: 0.5;
+$size-3: 0.75;
+$size-4: 1;
+$size-5: 1.5;
+$size-6: 2;
+$size-7: 2.5;
+$size-8: 3;
+
+$sizes: (
+  "1": $size-1,
+  "2": $size-2,
+  "3": $size-3,
+  "4": $size-4,
+  "5": $size-5,
+  "6": $size-6,
+  "7": $size-7,
+  "8": $size-8,
+);
+
+$spacings: (
+  "p": "padding",
+  "m": "margin",
+);
+
+
+@each $size, $times in $sizes {
+  @each $prefixclass, $property in $spacings {
+    .#{$prefixclass}-#{$size} {
+      #{$property}: $spacer * $times * 1px;
+    }
+    .#{$prefixclass}y-#{$size},
+    .#{$prefixclass}t-#{$size} {
+      #{$property}-top: $spacer * $times * 1px;
+    }
+    .#{$prefixclass}y-#{$size},
+    .#{$prefixclass}b-#{$size} {
+      #{$property}-bottom: $spacer * $times * 1px;
+    }
+    .#{$prefixclass}x-#{$size},
+    .#{$prefixclass}l-#{$size} {
+      #{$property}-left: $spacer * $times * 1px;
+    }
+    .#{$prefixclass}x-#{$size},
+    .#{$prefixclass}r-#{$size} {
+      #{$property}-right: $spacer * $times * 1px;
+    }
+  }
+}
+
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: $primary-color;
+}
+
+h1{ 
+  font-size: 2rem;
+  margin-bottom: 30px;
+  padding-top: 10px;
+  font-weight: 600;
+  @media (min-width: 768px){
+      background-color: $white;
+      border: 1px solid $white;
+      padding: 10px;
+  }
+}
+
+h2{
+  font-size: 1.6rem;
+}
+
+h3{
+  font-size: 1.5rem;
+  @media (min-width: 768px){
+      font-size: 2rem;
+  }
+}
+p{
+  color: $primary-text-color;
+  font-size: .9rem;
+}
+
+
+@mixin button() {
+  text-decoration: none;
+  border: 2px solid $primary-color;
+}
+
+.button-link{
+  @include button();
+  color: $white;
+  background-color: $primary-color;
+}
+.button-link-secondry{
+  @include button();
+  color: $primary-color;
+  background-color: $white;
+}
+
+.hidden{
+  display: none;
+}
+
+.txt-center{
+  text-align: center;
+}
+
+a{
+  color: $primary-text-color;
+}
+
+.flex {
+  display: flex;
+  &-reverse {
+    flex-direction: row-reverse;
+  }
+  &-col {
+    flex-direction: column;
+    &-reverse {
+      flex-direction: column-reverse;
+    }
+  }
+}
+
+.align-center {
+    align-items: center;
+}
+
+
